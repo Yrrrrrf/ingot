@@ -1,6 +1,6 @@
 [project]
 name = "ingot"
-version = "0.1.0"
+version = "0.0.1"
 description = "A lightweight, themeable boilerplate for creating tab-based PyQt applications."
 readme = "README.md"
 keywords = ["qt", "pyqt", "pyqt6", "gui", "template", "scaffolding"]
