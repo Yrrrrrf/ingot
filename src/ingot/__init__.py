@@ -1,5 +1,5 @@
 # """
-# qt-ingot: A lightweight, themeable boilerplate for creating tab-based PyQt applications.
+# ingot: A lightweight, themeable boilerplate for creating tab-based PyQt applications.
 
 # This __init__.py file exposes the primary classes of the library, allowing for
 # clean and direct imports.

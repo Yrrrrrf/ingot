@@ -1,27 +1,27 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/Yrrrrrf/qt-ingot/main/resources/img/template.png" alt="qt-ingot Icon" width="128" height="128">
-  <div align="center">qt-ingot</div>
+  <img src="https://raw.githubusercontent.com/Yrrrrrf/ingot/main/resources/img/template.png" alt="ingot Icon" width="128" height="128">
+  <div align="center">ingot</div>
 </h1>
 
 <div align="center">
 
-[![GitHub: Repo](https://img.shields.io/badge/qt--ingot-58A6FF?&logo=github)](https://github.com/Yrrrrrf/qt-ingot)
+[![GitHub: Repo](https://img.shields.io/badge/ingot-58A6FF?&logo=github)](https://github.com/Yrrrrrf/ingot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](./LICENSE)
-[![PyPI version](https://img.shields.io/pypi/v/qt-ingot)](https://pypi.org/project/qt-ingot/)
-[![Downloads](https://pepy.tech/badge/qt-ingot)](https://pepy.tech/project/qt-ingot)
+[![PyPI version](https://img.shields.io/pypi/v/ingot)](https://pypi.org/project/ingot/)
+[![Downloads](https://pepy.tech/badge/ingot)](https://pepy.tech/project/ingot)
 
 </div>
 
 > A lightweight, themeable boilerplate for creating tab-based PyQt applications.
 
-`qt-ingot` is a Python library designed to accelerate desktop application development by providing a self-configuring main window, an intelligent SASS-based theming engine, a data-driven menu bar, and a flexible layout system.
+`ingot` is a Python library designed to accelerate desktop application development by providing a self-configuring main window, an intelligent SASS-based theming engine, a data-driven menu bar, and a flexible layout system.
 
 ## 🚦 Getting Started
 
 ### Installation
 
 ```bash
-uv add qt-ingot
+uv add ingot
 ```
 
 #### Quick Start

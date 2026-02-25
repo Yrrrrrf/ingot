@@ -94,7 +94,7 @@ class ThemeManager:
                     string=f.read(), include_paths=include_paths
                 )
                 self._target.setStyleSheet(compiled_css)
-                
+
                 # Apply platform-specific styling after the theme
                 self._apply_platform_styling()
 
@@ -107,7 +107,7 @@ class ThemeManager:
             logging.error(f"Error applying theme {theme_name}: {e}")
 
     def apply_default_theme(self):
-        """Applies the default theme bundled with qt-ingot."""
+        """Applies the default theme bundled with ingot."""
         try:
             # This logic can be simplified for future versions, but is fine for now
             with pkg_resources.path(
@@ -118,17 +118,17 @@ class ThemeManager:
                     filename=str(scss_path), include_paths=include_paths
                 )
                 self._target.setStyleSheet(compiled_css)
-                
+
                 # Apply platform-specific styling after the default theme
                 self._apply_platform_styling()
         except Exception as e:
             logging.error(f"Error applying default theme: {e}")
-    
+
     def _apply_platform_styling(self):
         """Applies platform-specific styling, especially for scrollbars on macOS."""
         # Get current stylesheet
         current_style = self._target.styleSheet()
-        
+
         if self._platform == "darwin":  # macOS
             # Add macOS-specific scrollbar styling
             macos_scrollbar_css = """
@@ -171,4 +171,3 @@ class ThemeManager:
         elif self._platform == "linux":  # Linux
             # Add Linux-specific styling if needed
             pass
-

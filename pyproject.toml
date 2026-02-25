@@ -1,6 +1,6 @@
 [project]
-name = "qt-ingot"
-version = "0.0.5"
+name = "ingot"
+version = "0.1.0"
 description = "A lightweight, themeable boilerplate for creating tab-based PyQt applications."
 readme = "README.md"
 keywords = ["qt", "pyqt", "pyqt6", "gui", "template", "scaffolding"]
@@ -21,15 +21,15 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "PyQt6>=6.9.1",
+    "PyQt6>=6.10.2",
     "libsass>=0.23.0",
     "rune-lib>=0.0.4",
-    "rich>=14.2.0",
+    "rich>=14.3.3",
 ]
 
 [project.urls]
-Homepage = "https://github.com/Yrrrrrf/qt-ingot"
-Repository = "https://github.com/Yrrrrrf/qt-ingot"
+Homepage = "https://github.com/Yrrrrrf/ingot"
+Repository = "https://github.com/Yrrrrrf/ingot"
 
 
 [tool.hatch.build.targets.wheel]

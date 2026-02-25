@@ -1,5 +1,5 @@
 """
-Scene module for qt-ingot.
+Scene module for ingot.
 
 Contains classes for the SceneView architecture.
 """

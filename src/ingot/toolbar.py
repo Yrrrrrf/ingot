@@ -42,7 +42,7 @@ class MainToolbar(QFrame):
         self.menu_button.setToolTip("Menu")
 
         # App icon/label
-        self.app_icon = QLabel(".qt-ingot")
+        self.app_icon = QLabel(".ingot")
         self.app_icon.setObjectName("ingotAppIcon")
 
         self.left_layout.addWidget(self.app_icon)

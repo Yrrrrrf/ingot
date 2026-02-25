@@ -3,6 +3,7 @@ Drawable classes for the SceneView architecture.
 
 This combines the previous drawable.py and item.py functionality into a single, cohesive module.
 """
+
 from abc import ABC, abstractmethod
 from PyQt6.QtCore import QPoint, QPointF, QRectF
 from PyQt6.QtGui import QPainter, QColor, QPen, QBrush, QFont
@@ -11,17 +12,24 @@ from PyQt6.QtGui import QPainter, QColor, QPen, QBrush, QFont
 class Drawable(ABC):
     """
     Abstract base class for all drawable items in the SceneView.
-    
+
     This class defines the interface that all scene objects must implement.
     """
 
-    def __init__(self, x: float = 0, y: float = 0, z_index: int = 0, visible: bool = True, locked: bool = False):
+    def __init__(
+        self,
+        x: float = 0,
+        y: float = 0,
+        z_index: int = 0,
+        visible: bool = True,
+        locked: bool = False,
+    ):
         """
         Initialize the drawable item.
-        
+
         Args:
             x: X coordinate in scene space
-            y: Y coordinate in scene space  
+            y: Y coordinate in scene space
             z_index: The drawing order index (higher values are drawn on top)
             visible: Whether the item should be rendered
             locked: Whether the item is locked from interaction
@@ -36,7 +44,7 @@ class Drawable(ABC):
     def paint(self, painter: QPainter) -> None:
         """
         Draw the item using the provided painter.
-        
+
         Args:
             painter: The QPainter to use for drawing
         """
@@ -46,7 +54,7 @@ class Drawable(ABC):
     def get_bounding_box(self) -> QRectF:
         """
         Get the bounding box of the drawable item.
-        
+
         Returns:
             QRectF representing the bounding box of the item
         """
@@ -55,10 +63,10 @@ class Drawable(ABC):
     def contains_point(self, point: QPointF) -> bool:
         """
         Check if the item contains the given scene point.
-        
+
         Args:
             point: Point in scene coordinates to check
-        
+
         Returns:
             True if the item contains the point, False otherwise
         """
@@ -70,7 +78,7 @@ class Drawable(ABC):
     def on_clicked(self, point: QPointF):
         """
         Handle click events on the item.
-        
+
         Args:
             point: Point in scene coordinates where the click occurred
         """
@@ -83,15 +91,28 @@ class Rectangle(Drawable):
     A rectangle drawable that can be rendered in the scene.
     """
 
-    def __init__(self, x: float = 0, y: float = 0, width: float = 100, height: float = 100,
-                 color: QColor = None, border_color: QColor = None, z_index: int = 0, 
-                 visible: bool = True, locked: bool = False):
+    def __init__(
+        self,
+        x: float = 0,
+        y: float = 0,
+        width: float = 100,
+        height: float = 100,
+        color: QColor = None,
+        border_color: QColor = None,
+        z_index: int = 0,
+        visible: bool = True,
+        locked: bool = False,
+    ):
         super().__init__(x, y, z_index, visible, locked)
 
         self.width = width
         self.height = height
-        self.color = color or QColor(100, 150, 200, 150)  # Default semi-transparent blue
-        self.border_color = border_color or QColor(200, 200, 200)  # Default light gray border
+        self.color = color or QColor(
+            100, 150, 200, 150
+        )  # Default semi-transparent blue
+        self.border_color = border_color or QColor(
+            200, 200, 200
+        )  # Default light gray border
 
     def get_bounding_box(self) -> QRectF:
         """Get the bounding box of the rectangle."""
@@ -100,20 +121,22 @@ class Rectangle(Drawable):
     def contains_point(self, point: QPointF) -> bool:
         """
         Check if the rectangle contains the given scene point.
-        
+
         Args:
             point: Point in scene coordinates to check
-        
+
         Returns:
             True if the rectangle contains the point, False otherwise
         """
-        return (self.x <= point.x() <= self.x + self.width and
-                self.y <= point.y() <= self.y + self.height)
+        return (
+            self.x <= point.x() <= self.x + self.width
+            and self.y <= point.y() <= self.y + self.height
+        )
 
     def paint(self, painter: QPainter):
         """
         Paint the rectangle using the provided painter.
-        
+
         Args:
             painter: QPainter to use for drawing the rectangle
         """
@@ -141,15 +164,28 @@ class Ellipse(Drawable):
     An ellipse drawable that can be rendered in the scene.
     """
 
-    def __init__(self, x: float = 0, y: float = 0, width: float = 100, height: float = 100,
-                 color: QColor = None, border_color: QColor = None, z_index: int = 0, 
-                 visible: bool = True, locked: bool = False):
+    def __init__(
+        self,
+        x: float = 0,
+        y: float = 0,
+        width: float = 100,
+        height: float = 100,
+        color: QColor = None,
+        border_color: QColor = None,
+        z_index: int = 0,
+        visible: bool = True,
+        locked: bool = False,
+    ):
         super().__init__(x, y, z_index, visible, locked)
 
         self.width = width
         self.height = height
-        self.color = color or QColor(200, 100, 150, 150)  # Default semi-transparent pink
-        self.border_color = border_color or QColor(200, 200, 200)  # Default light gray border
+        self.color = color or QColor(
+            200, 100, 150, 150
+        )  # Default semi-transparent pink
+        self.border_color = border_color or QColor(
+            200, 200, 200
+        )  # Default light gray border
 
     def get_bounding_box(self) -> QRectF:
         """Get the bounding box of the ellipse."""
@@ -158,10 +194,10 @@ class Ellipse(Drawable):
     def contains_point(self, point: QPointF) -> bool:
         """
         Check if the ellipse contains the given scene point.
-        
+
         Args:
             point: Point in scene coordinates to check
-        
+
         Returns:
             True if the ellipse contains the point, False otherwise
         """
@@ -174,12 +210,12 @@ class Ellipse(Drawable):
         a = self.width / 2
         b = self.height / 2
 
-        return (centered_x ** 2) / (a ** 2) + (centered_y ** 2) / (b ** 2) <= 1
+        return (centered_x**2) / (a**2) + (centered_y**2) / (b**2) <= 1
 
     def paint(self, painter: QPainter):
         """
         Paint the ellipse using the provided painter.
-        
+
         Args:
             painter: QPainter to use for drawing the ellipse
         """
@@ -207,9 +243,17 @@ class Text(Drawable):
     A text drawable that can be rendered in the scene.
     """
 
-    def __init__(self, text: str, x: float = 0, y: float = 0,
-                 font_size: int = 12, color: QColor = None,
-                 z_index: int = 0, visible: bool = True, locked: bool = False):
+    def __init__(
+        self,
+        text: str,
+        x: float = 0,
+        y: float = 0,
+        font_size: int = 12,
+        color: QColor = None,
+        z_index: int = 0,
+        visible: bool = True,
+        locked: bool = False,
+    ):
         super().__init__(x, y, z_index, visible, locked)
 
         self.text = text
@@ -227,23 +271,24 @@ class Text(Drawable):
         """
         Check if the text contains the given scene point.
         For simplicity, we'll use a bounding box approximation.
-        
+
         Args:
             point: Point in scene coordinates to check
-        
+
         Returns:
             True if the text contains the point, False otherwise
         """
         # This is a simple approximation - for more precision, we'd need to
         # calculate the actual text bounds using QFontMetrics
         # For now, we'll use a 100x20 bounding box around the position
-        return (self.x <= point.x() <= self.x + 100 and
-                self.y <= point.y() <= self.y + 20)
+        return (
+            self.x <= point.x() <= self.x + 100 and self.y <= point.y() <= self.y + 20
+        )
 
     def paint(self, painter: QPainter):
         """
         Paint the text using the provided painter.
-        
+
         Args:
             painter: QPainter to use for drawing the text
         """
@@ -268,14 +313,21 @@ class WidgetWrapper(Drawable):
     """
     A wrapper for embedding a QWidget in the scene.
     """
-    
-    def __init__(self, widget, x: float = 0, y: float = 0, z_index: int = 0, 
-                 visible: bool = True, locked: bool = False):
+
+    def __init__(
+        self,
+        widget,
+        x: float = 0,
+        y: float = 0,
+        z_index: int = 0,
+        visible: bool = True,
+        locked: bool = False,
+    ):
         super().__init__(x, y, z_index, visible, locked)
-        
+
         self.widget = widget
-        self.width = widget.width() if hasattr(widget, 'width') else 100
-        self.height = widget.height() if hasattr(widget, 'height') else 100
+        self.width = widget.width() if hasattr(widget, "width") else 100
+        self.height = widget.height() if hasattr(widget, "height") else 100
 
     def get_bounding_box(self) -> QRectF:
         """Get the bounding box of the widget wrapper."""
@@ -284,22 +336,24 @@ class WidgetWrapper(Drawable):
     def contains_point(self, point: QPointF) -> bool:
         """
         Check if the widget wrapper contains the given scene point.
-        
+
         Args:
             point: Point in scene coordinates to check
-        
+
         Returns:
             True if the widget wrapper contains the point, False otherwise
         """
-        return (self.x <= point.x() <= self.x + self.width and
-                self.y <= point.y() <= self.y + self.height)
+        return (
+            self.x <= point.x() <= self.x + self.width
+            and self.y <= point.y() <= self.y + self.height
+        )
 
     def paint(self, painter: QPainter):
         """
         Paint the widget wrapper using the provided painter.
         Note: Actual widget rendering is handled by Qt's widget system,
         so this is just a placeholder rectangle.
-        
+
         Args:
             painter: QPainter to use for drawing the widget wrapper
         """
