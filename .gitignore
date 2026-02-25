@@ -1,3 +1,7 @@
+# all that start with a dot except .gitignore
+.*
+!.gitignore
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -6,15 +10,5 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
-
-# uv related
-
-.ruff_cache
-.pytest_cache
-
-# some
-.env
-
-**.lock
+# lock files
+**/**.lock
